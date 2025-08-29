@@ -12,12 +12,12 @@
     <div class="container">
         <form>
             <h1 class="text-center text-primary my-5">Calculator</h1>
-            <div class="row">
-                <div class="form-group my-2 col col-md-6">
+            <div class="row d-flex justify-content-center">
+                <div class="form-group my-2 col col-md-4">
                     <label>Enter First Number</label>
                     <input type="text" id="firstNumber" class="form-control" placeholder="Enter number">
                 </div>
-                <div class="form-group my-2 col col-md-6">
+                <div class="form-group my-2 col col-md-4">
                     <label>Enter Second Number</label>
                     <input type="text" class="form-control" id="secondNumber" placeholder="Enter number">
                 </div>
@@ -27,6 +27,7 @@
                 <button type="submit" class="btn btn-primary" onclick="calculateSub(event)">Subtract</button>
                 <button type="submit" class="btn btn-primary" onclick="calculateMultiply(event)">Multiply</button>
                 <button type="submit" class="btn btn-primary" onclick="calculateDivide(event)">Divide</button>
+                <button type="submit" class="btn btn-danger">Reset</button>
             </div>
         </form>
         <h2 class="text-center text-secondary" id="result"></h2>
@@ -73,7 +74,7 @@
             document.getElementById("result").innerHTML = "Please enter valid numbers.";
             return;
         }
-        document.getElementById("result").innerHTML = num1 * num2;
+        document.getElementById("result").innerHTML = "Result: " + num1 * num2;
     }
 
     function calculateDivide(e) {
@@ -84,7 +85,7 @@
             document.getElementById("result").innerHTML = "Please enter valid numbers.";
             return;
         }
-        document.getElementById("result").innerHTML = num1 / num2;
+        document.getElementById("result").innerHTML = "Result: " + num1 / num2;
     } 
 </script>
 </html>
