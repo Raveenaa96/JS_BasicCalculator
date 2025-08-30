@@ -1,1 +1,271 @@
+<html>
+    <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>String Functions</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center text-decoration-underline my-3">JS Strings</h1>
+            <h5 class="text-primary mt-5">1. at() - <small>The at() method returns an indexed character from a string. Can also use negative index</small></h5>
+            <p><b>Example:</b> str.at(-5)</p>
+            <p id="atText"></p>
+            <p id="atResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">2. charAt() - <small>charAt() returns the character at a specified index (position) in a string</small></h5>
+            <p><b>Example:</b> str.charAt(3)</p>
+            <p id="charAtText"></p>
+            <p id="charAtResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">3. toUppercase() - <small>The toUpperCase() method converts a string to uppercase letters</small></h5>
+            <p><b>Example:</b> str.toUppercase()</p>
+            <p id="upperCaseText"></p>
+            <p id="upperCaseResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">4. toLowerCase() - <small>The toLowerCase() method converts a string to lowercase letters.</small></h5>
+            <p><b>Example:</b> str.toLowerCase()</p>
+            <p id="lowerCaseText"></p>
+            <p id="lowerCaseResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">5. length() - <small>length property returns the length of a string</small></h5>
+            <p><b>Example:</b> str.length</p>
+            <p id="lengthText"></p>
+            <p id="lengthResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">6. slice() - <small>slice() extracts a part of a string and returns the extracted part.It accept negative indices/indexes</small></h5>
+            <p><b>Example:</b> str.slice(1,5)</p>
+            <p id="sliceText"></p>
+            <p id="sliceResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">7. substring() - <small>The substring() method extracts characters, between two indices (positions), from a string, and returns the substring. Treats any negative index as 0</small></h5>
+            <p><b>Example:</b> str.substring(1,4)</p>
+            <p id="subStringText"></p>
+            <p id="subStringResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">8. substr() - <small>The substr() method extracts a part of a string.It begins at a specified position, and returns a specified number of characters</small></h5>
+            <p><b>Example:</b> str.substr(2,5)</p>
+            <p id="subStrText"></p>
+            <p id="subStrResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">9. repeat() - <small>The repeat() method returns a string with a number of copies of a string</small></h5>
+            <p><b>Example:</b> str.repeat(3)</p>
+            <p id="repeatText"></p>
+            <p id="repeatResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">10. replace() - <small>replace() searches a string for a value,and returns a new string with the specified value(s) replaced</small></h5>
+            <p><b>Example:</b> str.replace("hello","Javascript")</p>
+            <p id="replaceText"></p>
+            <p id="replaceResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">11. trim() - <small>The trim() method removes whitespace from both sides of a string</small></h5>
+            <p><b>Example:</b> str.trim(), can also use trimStart() and trimEnd()</p>
+            <p id="trimText"></p>
+            <p id="trimResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">12. split() - <small>split() splits a string into an array of substrings, and returns the array</small></h5>
+            <p><b>Example:</b> str.split(" ",3) ,can also use split("") to split characters including spaces</p>
+            <p id="splitText"></p>
+            <p id="splitResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">13. indexOf() - <small>The indexOf() method returns the position of the first occurrence of a value in a string. Returns -1 if the value is not found</small></h5>
+            <p><b>Example:</b> str.indexOf("e",5) which finds occurence of "e" starting at position of 5, can use indexOf("e") which returns index of first occurrence</p>
+            <p id="indexOfText"></p>
+            <p id="indexOfResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">14. includes() - <small>The includes() method returns true if a string contains a specified string</small></h5>
+            <p><b>Example:</b> str.includes("Hello")</p>
+            <p id="includesText"></p>
+            <p id="includesResult"></p>
+            <hr>
+            <h5 class="text-primary mt-5">15. lastIndexOf() - <small>lastIndexOf() returns the index of the last occurrence of a specified value in a string</small></h5>
+            <p><b>Example:</b> str.lastIndexOf("World")</p>
+            <p id="lastIndexOfText"></p>
+            <p id="lastIndexOfResult"></p>
+            <hr>
+        </div>
+    </body>
+    <script>
+        //at() method
+        function atFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.at(-5)
+            }
+            return result;
+        }
+        let atresult = atFunc("Javascript World");
+        document.getElementById('atText').innerHTML =  `<b>Text:</b> ${JSON.stringify(atresult.text)}`;
+        document.getElementById('atResult').innerHTML =`<b>Result:</b> ${(atresult.string)}`;
 
+        //charAt() method
+        function charAtFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.charAt(3)
+            }
+            return result;
+        }
+        let charAtresult = charAtFunc("Hello World");
+        document.getElementById('charAtText').innerHTML =  `<b>Text:</b> ${JSON.stringify(charAtresult.text)}`;
+        document.getElementById('charAtResult').innerHTML =`<b>Result:</b> ${(charAtresult.string)}`;
+
+        //toupperCase() method
+        function toUpperCaseFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.toUpperCase()
+            }
+            return result;
+        }
+        let upperCaseResult = toUpperCaseFunc("Sweet Home");
+        document.getElementById('upperCaseText').innerHTML =  `<b>Text:</b> ${JSON.stringify(upperCaseResult.text)}`;
+        document.getElementById('upperCaseResult').innerHTML =`<b>Result:</b> ${(upperCaseResult.string)}`;
+
+        //toLowerCase() method
+        function toLowerCaseFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.toLowerCase()
+            }
+            return result;
+        }
+        let lowerCaseResult = toLowerCaseFunc("SWEET Home");
+        document.getElementById('lowerCaseText').innerHTML =  `<b>Text:</b> ${JSON.stringify(lowerCaseResult.text)}`;
+        document.getElementById('lowerCaseResult').innerHTML =`<b>Result:</b> ${(lowerCaseResult.string)}`;
+
+        //length() method
+        function lengthFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.length
+            }
+            return result;
+        }
+        let lengthResult = lengthFunc("Hello World");
+        document.getElementById('lengthText').innerHTML = `<b>Text:</b> ${JSON.stringify(lengthResult.text)}`;
+        document.getElementById('lengthResult').innerHTML =`<b>Result:</b> ${(lengthResult.string)}`;
+
+        //slice() method
+        function sliceFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.slice(1,5)
+            }
+            return result;
+        }
+        let sliceResult = sliceFunc("sliceMe");
+        document.getElementById('sliceText').innerHTML =  `<b>Text:</b> ${JSON.stringify(sliceResult.text)}`;
+        document.getElementById('sliceResult').innerHTML =`<b>Result:</b> ${(sliceResult.string)}`;
+
+        //subString() method
+        function subStringFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.substring(1,4)
+            }
+            return result;
+        }
+        let subStringResult = subStringFunc("Hello World");
+        document.getElementById('subStringText').innerHTML =  `<b>Text:</b> ${JSON.stringify(subStringResult.text)}`;
+        document.getElementById('subStringResult').innerHTML =`<b>Result:</b> ${(subStringResult.string)}`;
+
+        //substr() method
+        function subStrFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.substr(2,5)
+            }
+            return result;
+        }
+        let subStrResult = subStrFunc("Hello World");
+        document.getElementById('subStrText').innerHTML =  `<b>Text:</b> ${JSON.stringify(subStrResult.text)}`;
+        document.getElementById('subStrResult').innerHTML =`<b>Result:</b> ${(subStrResult.string)}`;
+
+        //repeat() method
+        function repeatFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.repeat(3)
+            }
+            return result;
+        }
+        let repeatResult = repeatFunc("Hello World");
+        document.getElementById('repeatText').innerHTML =  `<b>Text:</b> ${JSON.stringify(repeatResult.text)}`;
+        document.getElementById('repeatResult').innerHTML =`<b>Result:</b> ${(repeatResult.string)}`;
+
+        //replace() method
+        function replaceFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.replace("Hello","Javascript")
+            }
+            return result;
+        }
+        let replaceResult = replaceFunc("Hello World");
+        document.getElementById('replaceText').innerHTML =  `<b>Text:</b> ${JSON.stringify(replaceResult.text)}`;
+        document.getElementById('replaceResult').innerHTML = `<b>Result:</b> ${(replaceResult.string)}`;
+
+        //trim() method
+        function trimFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.trim()
+            }
+            return result;
+        }
+        let trimResult = trimFunc("    Hello World    ");
+        document.getElementById('trimText').innerHTML =  `<b>Text:</b> ${JSON.stringify(trimResult.text)}`;
+        document.getElementById('trimResult').innerHTML =`<b>Result:</b> ${(trimResult.string)}`;
+
+        //split() method
+        function splitFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.split(" ", 3)
+            }
+            return result;
+        }
+        let splitResult = splitFunc("splits a string into an array of substrings");
+        document.getElementById('splitText').innerHTML =  `<b>Text:</b> ${JSON.stringify(splitResult.text)}`;
+        document.getElementById('splitResult').innerHTML =`<b>Result:</b> ${(splitResult.string)}`;
+
+        //indexOf() method
+        function indexOfFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.indexOf("e",5)
+            }
+            return result;
+        }
+        let indexOfResult = indexOfFunc("indexOf returns the position of the first occurence");
+        document.getElementById('indexOfText').innerHTML =  `<b>Text:</b> ${JSON.stringify(indexOfResult.text)}`;
+        document.getElementById('indexOfResult').innerHTML =`<b>Result:</b> ${(indexOfResult.string)}`;
+
+        //includes() method
+        function includesFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.includes("Hello")
+            }
+            return result;
+        }
+        let includesResult = includesFunc("Javascript World");
+        document.getElementById('includesText').innerHTML =  `<b>Text:</b> ${JSON.stringify(includesResult.text)}`;
+        document.getElementById('includesResult').innerHTML =  `<b>Result:</b> ${JSON.stringify(includesResult.string)}`;
+
+        //lastIndexOf() method
+        function lastIndexOfFunc(str) {
+            let result = {
+                text      : str,
+                string    : str.lastIndexOf("World")
+            }
+            return result;
+        }
+        let lastIndexOfResult = lastIndexOfFunc("Hello World, Javascript World");
+        document.getElementById('lastIndexOfText').innerHTML =  `<b>Text:</b> ${JSON.stringify(lastIndexOfResult.text)}`;
+        document.getElementById('lastIndexOfResult').innerHTML =  `<b>Result:</b> ${JSON.stringify(lastIndexOfResult.string)}`;
+</script>
+</html>
