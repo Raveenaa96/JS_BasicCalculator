@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Resume</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body onload="load()">
+    <header>
+        <div class="profile_pic">
+            <img src="./images/avatar-img.webp"  alt="profile image"/>
+        </div>
+        <nav class="navbar">
+            <ul class="ul_navbar">
+                <li><a href="#" onclick="showAboutMe()">Home</a></li>
+                <li><a href="./blog/css-background.html">Blog</a></li>
+                <li><a href="#" onclick="showContact()">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <aside class="sidebar">
+            <ul>
+                <li onclick="showAboutMe()">ABOUT ME</li>
+                <li onclick="showEducation()">EDUCATION</li>
+                <li onclick="showSkills()">SKILLSET</li>
+                <li onclick="showExperience()">PROFESSIONAL EXPERIENCE</li>
+                <li onclick="showLanguage()">LANGUAGES</li>
+                <li onclick="showHobbies()">HOBBIES</li>
+            </ul>
+        </aside>
+        <section class="main_content">
+            <div id="content" class="div_space"></div>
+        </section>
+    </main>
+</body>
+<script src="./script.js"></script>
+</html>

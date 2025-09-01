@@ -1,0 +1,46 @@
+.bg-img {
+    position: fixed;
+    z-index: -1;
+    opacity: 0.4;
+    margin: auto;
+    top: 200px;
+    left: 200px;
+    right: 200px;
+}
+.blog-name {
+    color: rgb(255, 0, 0);
+    font-size: 30px;
+    text-align: center;
+}
+.welcome-text {
+    text-align: center;
+    font-size: 25px;
+}
+.welcome-text-color {
+    color: brown;
+}
+.title-name {
+    text-decoration: underline;
+    font-family:monospace;
+    font-size: 20px;
+}
+.text-indentation {
+    text-indent: 50px;
+}
+.list-title {
+    font-weight: bold;
+}
+.list-content {
+    font-weight: normal;
+    text-indent: 50px;
+}
+.back_button {
+    float: right;
+    border: 1px solid rgb(255, 55, 0);
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
