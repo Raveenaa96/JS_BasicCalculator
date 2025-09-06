@@ -10,39 +10,78 @@
     </head>
     <body>
         <div class="container">
-            <form onsubmit="onSubmit(event)">
+            <!-- Login Form -->
+            <form onsubmit="form1(event)" id="login">
                 <h1 class="text-center text-primary my-5">Login</h1>
-                <div class="d-flex align-items-center flex-column row">
+                <div class="d-flex flex-column row  align-items-center">
                     <div id="usr_err" class="text-center text-danger small"></div>
-                    <div class="form-group my-3 d-flex align-items-center col-md-5">
-                        <label for="username" class="me-2">Username</label>
-                        <input type="text" id="username" name="username" class="form-control" minlength="6"/>
+                    <div class="form-group my-3 d-flex col-md-4">
+                        <label for="username" class="col-md-3">Username</label>
+                        <input type="text" id="username" name="username" class="form-control col-md-3" minlength="6" />
                     </div>
                     <div id="pwd_err" class="text-center text-danger small"></div>
-                    <div class="form-group my-3 d-flex align-items-center col-md-5">
-                        <label for="password" class="me-2">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" minlength="6">
+                    <div class="form-group my-3 d-flex col-md-4">
+                        <label for="password" class="col-md-3">Password</label>
+                        <input type="text" name="password" id="password" class="form-control col-md-3" minlength="6">
                     </div>
                     <div class="text-center m-auto mt-5">
                         <button type="submit" class="btn btn-primary">Login</button>
+                        <p class="text-primary text-center text-decoration-underline" onclick="showRegister()"><small>Register Here</small></p>
                     </div>
                     <div id="success_msg" class="text-success mt-4 text-center"></div>
+                </div>
+            </form>
+            <!-- Registration Form -->
+            <form onsubmit="form2(event)" id="register" style="display: none;">
+                <h1 class="text-center text-primary my-5">Registration</h1>
+                <div class="d-flex flex-column row  align-items-center">
+                    <div id="user_err" class="text-center text-danger small"></div>
+                    <div class="form-group my-3 d-flex col-md-4">
+                        <label for="username" class="col-md-4">Username</label>
+                        <input type="text" id="usrname" name="username" class="form-control col-md-3" minlength="6"/>
+                    </div>
+                    <div id="password_err" class="text-center text-danger small"></div>
+                    <div class="form-group my-3 d-flex col-md-4">
+                        <label for="password" class="col-md-4">Password</label>
+                        <input type="text" name="password" id="pword" class="form-control col-md-3" minlength="6">
+                    </div>
+                    <div id="confirmPwd_err" class="text-center text-danger small"></div>
+                    <div class="form-group my-3 d-flex col-md-4">
+                        <label for="password" class="col-md-4">Confirm Password</label>
+                        <input type="text" name="password" id="confirmPassword" class="form-control col-md-3" minlength="6">
+                    </div>
+                    <div class="text-center m-auto mt-5">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                        <p class="text-primary text-center text-decoration-underline" onclick="showLogin()"><small>Login</small></p>
+                    </div>
+                    <div id="confirm_msg" class="text-success mt-4 text-center"></div>
                 </div>
             </form>
         </div>
      </body>
      <script>
-          function onSubmit(e){
+          function form1(e){
             e.preventDefault();
              var username = document.getElementById("username").value;
              var password = document.getElementById("password").value;
+             const usernameRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+             const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
             if(username==null || username=='') {
                 document.getElementById('usr_err').innerHTML = `<b>Please Enter valid username</b>`;
             }
+            else if(!usernameRegex.test(username)){
+                document.getElementById('usr_err').innerHTML = ``;
+                document.getElementById('usr_err').innerHTML = `<b>Invalid User Name</b>`;
+            }
             else if(password==null || password=='') {
                 document.getElementById('usr_err').innerHTML = ``;
                 document.getElementById('pwd_err').innerHTML = `<b>Please Enter valid password</b>`;
+            }
+            else if(!passwordRegex.test(password)){
+                document.getElementById('usr_err').innerHTML = ``;
+                document.getElementById('pwd_err').innerHTML = ``;
+                document.getElementById('pwd_err').innerHTML = `<b>Invalid Password</b>`;
             }
             else {
                 document.getElementById('usr_err').innerHTML = ``
@@ -50,10 +89,71 @@
 
                 let result = {
                     username : username,
-                    password :password
+                    password : password
                 }
-
                 document.getElementById('success_msg').innerHTML = ` <b>Username: ${JSON.stringify(result.username)}, Password: ${JSON.stringify(result.password)} </b>`;
+            }
+          }
+
+          //Show Function
+
+          function showRegister()
+          {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('register').style.display = 'block';
+          }
+
+          function showLogin()
+          {
+            document.getElementById('login').style.display = 'block';
+            document.getElementById('register').style.display = 'none';
+          }
+    // Registration Form  
+
+          function form2(e){
+            e.preventDefault();
+             var username = document.getElementById("usrname").value;
+             var password = document.getElementById("pword").value;
+             var confirmPassword = document.getElementById("confirmPassword").value;
+             const usernameRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+             const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if(username == null || username =='') {
+                document.getElementById('user_err').innerHTML = `<b>Please Enter Username</b>`;
+            }
+            else if(!usernameRegex.test(username)){
+                document.getElementById('user_err').innerHTML = ``;
+                document.getElementById('user_err').innerHTML = `<b>Username should contain letters, "@" symbol and missing domain</b>`;
+            }
+            else if(password == null || password =='') {
+                document.getElementById('user_err').innerHTML = ``;
+                document.getElementById('password_err').innerHTML = `<b>Please Enter Password</b>`;
+            }
+            else if(!passwordRegex.test(password)){
+                document.getElementById('user_err').innerHTML = ``;
+                document.getElementById('password_err').innerHTML = ``;
+                document.getElementById('password_err').innerHTML = `<b>Password should contain uppercase letters,lowercase letters,digits and special characters</b>`;
+            }
+            else if(confirmPassword == null || confirmPassword==''){
+                document.getElementById('user_err').innerHTML = ``;
+                document.getElementById('password_err').innerHTML = ``;
+                document.getElementById('confirmPwd_err').innerHTML = `<b>Please Fill in this Field</b>`;
+            }
+            else if(password !== confirmPassword){
+                document.getElementById('user_err').innerHTML = ``;
+                document.getElementById('password_err').innerHTML = ``;
+                document.getElementById('confirmPwd_err').innerHTML = `<b>Password and Confirm Password does not match</b>`;
+            }
+            else {confirmPwd_err
+                document.getElementById('user_err').innerHTML = ``
+                document.getElementById('password_err').innerHTML = ``
+                document.getElementById('confirmPwd_err').innerHTML = ``
+
+                let result = {
+                    username : username,
+                    password : password
+                }
+                document.getElementById('confirm_msg').innerHTML = ` <b>Username: ${JSON.stringify(result.username)}, Password: ${JSON.stringify(result.password)} </b>`;
             }
           }
      </script>
